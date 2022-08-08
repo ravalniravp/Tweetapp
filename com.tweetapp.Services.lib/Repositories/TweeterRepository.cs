@@ -161,6 +161,12 @@ namespace com.tweetapp.Services.lib.Repositories
                                                 .ThenInclude(u => u.TagPerson)
                                               .Include(u => u.CreatedBy)
                                               .FirstOrDefaultAsync(t => t.Id == tweet.Id);
+            if(currentUserId != updateTweeter.CreatedById)
+            {
+                response.Success = false;
+                response.Message = "You can not update this tweet";
+                return response;
+            }    
             updateTweeter.Message = tweet.Message;
             updateTweeter.UpdatedById = currentUserId;
             

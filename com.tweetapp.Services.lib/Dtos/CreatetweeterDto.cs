@@ -18,7 +18,6 @@ namespace com.tweetapp.Services.lib.Dtos
         [StringLength(144)]
         public string Message { get; set; }
         public ICollection<CreatetagDto> Tags { get; set; }
-        public bool isLike { get; set; }
 
     }
 }

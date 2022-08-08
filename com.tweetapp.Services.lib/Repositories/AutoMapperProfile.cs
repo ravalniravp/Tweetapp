@@ -58,7 +58,7 @@ namespace com.tweetapp.Services.Repositories.lib
                 })
                 .ForMember(dest => dest.Likes, opt =>
                 {
-                    opt.MapFrom(sr => sr.Likes.Count());
+                    opt.MapFrom(sr => sr.Likes.Count(l => l.IsLike == true));
                 })
                 .ReverseMap();
             CreateMap<Tag, ListTagDto>()
