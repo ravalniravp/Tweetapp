@@ -24,7 +24,7 @@ namespace com.tweetapp.web.Controllers
         {
             var response = await _tweeterRepository.GetAllTweets();
             if (!response.Success)
-                return BadRequest(response);
+                return NotFound(response);
             return Ok(response);
         }
 
@@ -33,7 +33,7 @@ namespace com.tweetapp.web.Controllers
         {
             var response = await _tweeterRepository.GetAllTweetsByUserName(userName);
             if (!response.Success)
-                return BadRequest(response);
+                return NotFound(response);
             return Ok(response);
         }
 
@@ -42,7 +42,7 @@ namespace com.tweetapp.web.Controllers
         {
             var response = await _tweeterRepository.AddTweet(createtweeterDto);
             if (!response.Success)
-                return BadRequest(response);
+                return NotFound(response);
             return Ok(response);
         }
 
@@ -51,7 +51,7 @@ namespace com.tweetapp.web.Controllers
         {
             var response = await _tweeterRepository.UpdateTweet(updateTweetDto);
             if (!response.Success)
-                return BadRequest(response);
+                return NotFound(response);
             return Ok(response);
         }
 
@@ -60,7 +60,7 @@ namespace com.tweetapp.web.Controllers
         {
             var response = await _tweeterRepository.DeleteTweet(id);
             if (!response.Success)
-                return BadRequest(response);
+                return NotFound(response);
             return Ok(response);
         }
 
@@ -70,7 +70,7 @@ namespace com.tweetapp.web.Controllers
             var response = await _tweeterRepository.ReplyOnTweet(id, replyDto);
             if (!response.Success)
             {
-                return BadRequest(response);
+                return NotFound(response);
             }
             return Ok(response);
         }
@@ -81,7 +81,7 @@ namespace com.tweetapp.web.Controllers
             var response =await _tweeterRepository.LikeTweet(id);
             if (!response.Success)
             {
-                return BadRequest(response);
+                return NotFound(response);
             }
             return Ok(response);
         }

@@ -24,7 +24,7 @@ namespace com.tweetapp.web.Controllers
         {
             var response = await repository.GetAllUsers();
             if (!response.Success)
-                return BadRequest(response);
+                return NotFound(response);
             return Ok(response);
         }
 
@@ -33,7 +33,7 @@ namespace com.tweetapp.web.Controllers
         {
             var response = await repository.GetUserByName(username);
             if (!response.Success)
-                return BadRequest(response);
+                return NotFound(response);
             return Ok(response);
         }
 
@@ -43,7 +43,7 @@ namespace com.tweetapp.web.Controllers
         {
             var response = await repository.RegisterUser(registerUser, registerUser.Password);
             if (!response.Success)
-                return BadRequest(response);
+                return NotFound(response);
             return Ok(response);
         }
         [AllowAnonymous]
@@ -53,7 +53,7 @@ namespace com.tweetapp.web.Controllers
             var response =await repository.Login(userName, password);
             if (!response.Success)
             {
-                return BadRequest(response);
+                return NotFound(response);
             }
             return Ok(response);
         }
@@ -64,7 +64,7 @@ namespace com.tweetapp.web.Controllers
             var response = await repository.ForgetPassword(userName, email, password);
             if (!response.Success)
             {
-                return BadRequest(response);
+                return NotFound(response);
             }
             return Ok(response);
         }
